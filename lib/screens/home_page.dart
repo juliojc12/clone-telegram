@@ -1,47 +1,32 @@
+import 'package:cod3r_crud/constants/constants.dart';
+import 'package:cod3r_crud/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:telegram_clone/data/constants.dart';
-import 'package:telegram_clone/data/contact.dart';
-import 'package:telegram_clone/widget/user_contacts.dart';
-import 'package:telegram_clone/widget/users.dart';
 
-class TelegramAppBar extends StatelessWidget {
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Contact contact = Provider.of(context);
     return Scaffold(
+      backgroundColor: blueTelegram,
       appBar: AppBar(
-        backgroundColor: telegramAppBarColor,
-        title: Text(
-          'Telegram',
-          style: TextStyle(
-            fontWeight: FontWeight.normal,
-          ),
-        ),
-        leading: Icon(Icons.dehaze),
+        title: Text('Telegram'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: ContactSearch(),
+                delegate: SearchContact(),
               );
             },
-            color: Colors.white,
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: contact.count,
-        itemBuilder: (context, index) => Users(contact.byIndex(index)),
-      ),
+      drawer: MyDrawer(),
     );
   }
 }
 
-class ContactSearch extends SearchDelegate {
+class SearchContact extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -73,11 +58,11 @@ class ContactSearch extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(10),
-      child: Text(query),
-    );
+      child: Text(query),);
   }
   @override
-  ThemeData appBarTheme(BuildContext context) {
+  ThemeData appBarTheme(BuildContext context){
     return Theme.of(context);
   }
 }
+  
