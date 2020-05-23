@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telegram_clone/routes/app_routes.dart';
 
 import 'my_list_contacts.dart';
 
@@ -49,7 +50,9 @@ class _MyDrawerState extends State<MyDrawer> {
           MyContactList(
             iconData: Icons.bookmark,
             title: "Mensagens Salvas",
-            onPress: () {},
+            onPress: () {
+              Navigator.of(context).pushNamed(AppRouter.SAVEDMENSAGES);
+            },
           ),
           MyContactList(
             iconData: Icons.settings,

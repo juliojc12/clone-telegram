@@ -1,12 +1,11 @@
-import 'package:cod3r_crud/constants/constants.dart';
-import 'package:cod3r_crud/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:telegram_clone/widgets/my_drawer.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blueTelegram,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Telegram'),
         actions: <Widget>[
@@ -31,7 +30,7 @@ class SearchContact extends SearchDelegate {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: Icon(Icons.cancel),
         onPressed: () {
           query = '';
         },
